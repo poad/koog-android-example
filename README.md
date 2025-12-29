@@ -61,8 +61,9 @@ Langfuse などの SaaS を使用する前に、ローカルで Jaeger を使用
 
 ```shell
 # Jaeger を起動
+mkdir -P jaeger
 curl -sSL "$download_url" -o jaeger.tar.gz
-tar -xzf jaeger.tar.gz
+tar -xzf jaeger.tar.gz --strip-components=1 -C jaeger
 cd jaeger
 COLLECTOR_OTLP_ENABLED=true ./jaeger \
   --set=receivers.otlp.protocols.grpc.endpoint=0.0.0.0:4317 \
